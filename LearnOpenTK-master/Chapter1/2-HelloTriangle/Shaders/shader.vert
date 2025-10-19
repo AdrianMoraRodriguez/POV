@@ -27,7 +27,6 @@
 
 layout(location = 0) in vec3 aPosition;
 
-vec4 r = vec4()
 
 
 // Like C, we have an entrypoint function. In this case, it takes void and returns void, and must be named main.
