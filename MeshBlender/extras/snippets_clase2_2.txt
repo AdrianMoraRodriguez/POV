@@ -1,0 +1,200 @@
+1. Clase para leer el json
+namespace POV{
+public class RetrievedMaterial {
+    public string name {get; init;} = "Unknown";
+    public float[] diffuse_color {get; init;} = {1.0f,1.0f,1.0f,1.0f};
+}
+
+
+public class RetrievedMesh{
+
+    public RetrievedMaterial[] materials {get; init;} = new RetrievedMaterial[0];
+    public int nvertex {get; set;}
+
+    public float[] vertexdata {get; init;} = new float[0];
+    public float[]  weightdata {get; init;}= new float[0];
+    public int[] nindex {get; init;}=new int[0];
+
+    public int[][] indexdata {get; init;}= new int[0][];
+
+}
+}
+
+2. Clase para procesar la malla que hemos recuperado
+namespace POV
+{
+public class Mesh {
+
+    public float[] vertexData {get; private set; } = new float[0];
+    public int[] indexData {get; private set;} = new int[0];
+
+    public int [] slotData {get; private set;} = new int[0];
+
+    public RetrievedMaterial[] matData {get; private set;} = new RetrievedMaterial[0];
+
+    private RetrievedMesh _retrievedMesh = new RetrievedMesh();
+
+    public int vertexBuffer {get; set;}
+    public int indexBuffer {get; set;}
+
+    public int vertexArray {get; set;}
+
+    
+    public Mesh(){
+        
+
+
+    }
+
+    public Mesh(RetrievedMesh retMesh)
+    : this() {
+
+        _retrievedMesh=retMesh;
+
+    }
+     
+
+ public void Make(){
+        
+
+        var mesh=_retrievedMesh;
+
+
+        matData=new RetrievedMaterial[mesh.materials.Length-1];
+
+        for(int i=1;i<mesh.materials.Length;i++){
+            matData[i-1]=mesh.materials[i]; // The first one is a default
+            
+        }
+        if(mesh.vertexdata is null || mesh.weightdata is null || mesh.indexdata is null)
+            throw new Exception("Error: mesh data is wrong or empty");
+        int nvertices=mesh.vertexdata.Length;
+        int nweight=mesh.weightdata.Length;
+
+        if((nvertices/3) != nweight)
+            throw new Exception("Number of vertex weights is different of number of vertices");
+
+        vertexData=new float[nvertices+nweight];
+        int nvalues = 4; // 3 components per vers, 1 per weight
+        for(int i=0,j=0,k=0;i<mesh.vertexdata.Length;i=i+3,j=j+1,k=k+nvalues){
+            vertexData[k]=mesh.vertexdata[i];
+            vertexData[k+1]=mesh.vertexdata[i+1];
+            vertexData[k+2]=mesh.vertexdata[i+2];
+            vertexData[k+3]=mesh.weightdata[j];
+        }
+        slotData=new int[mesh.materials.Length-1];
+        
+        int nindex=0;
+        for(int i=0;i<(mesh.materials.Length-1);i++)
+        {
+            slotData[i]=nindex;
+            nindex+=mesh.indexdata[i].Length;
+        
+        }
+
+        indexData=new int[nindex];
+        int count=0;
+        for(int i=0;i<(mesh.materials.Length-1);i++){
+            for(int j=0;j<mesh.indexdata[i].Length;j++)
+                indexData[count++]=mesh.indexdata[i][j];
+        }
+
+    }
+
+}
+}
+
+3. Usings, nuevas variables privadas de Window y Leyendo el json
+using System;
+using System.Text.Json;
+
+.....
+
+private RetrievedMesh _retrievedMesh;
+private readonly JsonSerializerOptions _jsonOptions= new();
+
+private Mesh _mesh;
+
+
+.....
+
+
+// Retrieve mesh from json (en OnLoad)
+        string ?text=null;
+        text=File.ReadAllText("mesh.json");
+        if(text is null)
+            throw new Exception("Error finding or reading file");
+        else
+            _retrievedMesh =  JsonSerializer.Deserialize<RetrievedMesh>(text,_jsonOptions); 
+        
+        if(_retrievedMesh is null)
+            throw new Exception("Error retrieving mesh");
+
+4. Obteniendo los datos en mesh
+
+
+        _mesh=new Mesh(_retrievedMesh);
+        _mesh.Make();
+
+        vertexData=_mesh.vertexData;
+        indexData=_mesh.indexData;
+
+5. Configurando el VAO
+
+var posLocation = _shader.GetAttribLocation("aPosition");
+        GL.EnableVertexAttribArray(posLocation);
+        GL.VertexAttribPointer(posLocation,3,VertexAttribPointerType.Float,false,4*sizeof(float),0);
+
+        var colorLocation = _shader.GetAttribLocation("aWeight");
+        GL.EnableVertexAttribArray(colorLocation);
+        GL.VertexAttribPointer(colorLocation,1,VertexAttribPointerType.Float,false,1*sizeof(float),3*sizeof(float));
+
+
+6. Shaders
+
+// shader.vert
+#version 330 core
+
+layout(location=0) in vec3 aPosition;
+layout(location=1) in float aWeight;
+
+uniform mat4 view;
+uniform mat4 model;
+uniform mat4 projection;
+
+
+
+void main(){
+    vec4 position=vec4(aPosition,1.0f) * model * view * projection;
+
+    gl_Position=position;
+}
+
+
+//shader.frag
+#version 330 core 
+
+out vec4 OutFragColor;
+void main()
+{
+    OutFragColor=vec4(1.0f,0.0f,0.0f,1.0f);
+}
+
+7. Renderizado
+
+
+    if (_mesh.indexData is not null && _mesh.slotData is not null){
+            for(int i=0;i<_mesh.slotData.Length;i++)
+            {   
+                int nelements=0;
+                if(i==(_mesh.slotData.Length-1))
+                    nelements=_mesh.indexData.Length-_mesh.slotData[i];
+                else
+                    nelements=_mesh.slotData[i+1]-_mesh.slotData[i];
+                GL.DrawElements(PrimitiveType.Triangles,nelements,DrawElementsType.UnsignedInt, ref _mesh.indexData[_mesh.slotData[i]]);
+
+            }
+        }
+
+
+
