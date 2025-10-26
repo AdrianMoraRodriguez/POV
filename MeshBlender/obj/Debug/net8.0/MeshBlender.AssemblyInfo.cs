@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeshBlender")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fdc17baf9547a511f2caebf877a7cbe7f0a728cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f76ac263a4c095bc195481b5305a49ac6da50713")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeshBlender")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeshBlender")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
