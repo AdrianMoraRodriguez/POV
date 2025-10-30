@@ -1,0 +1,148 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Chapter1\\2-HelloTriangle\\2-HelloTriangle.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Chapter1\\2-HelloTriangle\\2-HelloTriangle.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Chapter1\\2-HelloTriangle\\2-HelloTriangle.csproj",
+        "projectName": "LearnOpenTK",
+        "projectPath": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Chapter1\\2-HelloTriangle\\2-HelloTriangle.csproj",
+        "packagesPath": "C:\\Users\\alu0101465883\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Chapter1\\2-HelloTriangle\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\alu0101465883\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "OpenTK": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\Common.csproj",
+        "projectName": "LearnOpenTK.Common",
+        "projectPath": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\alu0101465883\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alu0101465883\\Documents\\PovGit\\LearnOpenTK\\Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\alu0101465883\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "OpenTK": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "StbImageSharp": {
+              "target": "Package",
+              "version": "[2.27.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

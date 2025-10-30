@@ -1,0 +1,117 @@
+{
+
+    "mesh_list" : [
+        {
+            "file" : "assets/sm_pawn.json",
+            "id" : "pawn"
+            
+        },
+        {
+            "file" : "assets/sm_cube.json",
+            "id" : "cube"
+        }
+    ],
+
+    "actor_list" : [
+        
+        {
+            "id" : "apawn",
+            "sm" : "pawn",
+            "enabled" : true,
+            "position" : [0.0,0.0,0.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+        },
+        {
+            "id" : "aprop1",
+            "sm" : "cube",
+            "enabled" : true,
+            "position" : [0.0,0.0,-5.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+
+        },
+		{
+            "id" : "aprop2",
+            "sm" : "cube",
+
+            "enabled" : true,
+            "position" : [10.0,0.0,10.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+
+        },
+		{
+            "id" : "aprop3",
+            "sm" : "cube",
+            "enabled" : true,
+            "position" : [10.0,0.0,-10.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+
+        },
+		{
+            "id" : "aprop4",
+            "sm" : "cube",
+            "shadow" : true,
+            "enabled" : true,
+            "position" : [-10.0,0.0,-10.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+
+        },
+		{
+            "id" : "aprop5",
+            "sm" : "cube",
+            "enabled" : true,
+            "position" : [-10.0,0.0,10.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+            "scale" : [1.0,1.0,1.0]
+
+
+        },
+		{
+		    "id" : "afloor",
+            "type" : "staticmesh",
+            "sm" : "cube",
+            "enabled" : true,
+            "position" : [0.0,-2.0,0.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+			"scale" : [100.0,0.1,100.0]
+        
+		}
+        
+    ],
+
+    "playerstartposition" : [0.0,0.0,0.0],
+    "playerstartrotationangle" : 0.0,
+    "playerstartrotationaxis" : [0.0,1.0,0.0]
+
+    
+}
