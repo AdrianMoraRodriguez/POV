@@ -28,7 +28,6 @@
 layout(location = 0) in vec3 aPosition;
 
 
-
 // Like C, we have an entrypoint function. In this case, it takes void and returns void, and must be named main.
 // You can do all sorts of calculations here to modify your vertices, but right now, we don't need to do any of that.
 // gl_Position is the final vertex position; pass a vec4 to it and you're done.
@@ -36,7 +35,17 @@ layout(location = 0) in vec3 aPosition;
 // It's only used in some more advanced OpenGL functions; it's not needed here.
 // So with a call to the vec4 function, we just give it a constant value of 1.0.
 
+const mat4 v = mat4(1.0, 0.0 ,0.0, -10.0,
+                    0.0, 0.0, 1.0, -10.0,
+                    0.0, -1.0, 0.0, 10.0,
+                    0.0, 0.0, 0.0, 1.0); // Matriz de vista, define la posición y orientación de la cámara
+
+const mat4 p = mat4(1.0, 0.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0, 0.0,
+                    0.0, 0.0, 20.0/19.0, -20.0/19.0,
+                    0.0, 0.0, 1.0, 0.0); // Matriz de proyección, define la perspectiva de la cámara
+
 void main(void)
 {
-    gl_Position = vec4(aPosition, 1.0);
+    gl_Position = vec4(aPosition, 1.0) * v * p;
 }

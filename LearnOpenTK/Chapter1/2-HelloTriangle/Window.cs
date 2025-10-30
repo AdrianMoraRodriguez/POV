@@ -15,11 +15,17 @@ namespace LearnOpenTK
         // Negative X coordinates move to the left, positive X move to the right.
         // Negative Y coordinates move to the bottom, positive Y move to the top.
         // OpenGL only supports rendering in 3D, so to create a flat triangle, the Z coordinate will be kept as 0.
-        private readonly float[] _vertices =
+        // private readonly float[] _vertices =
+        // {
+        //     -0.5f, -0.5f, 0.0f, // Bottom-left vertex
+        //      0.5f, -0.5f, 0.0f, // Bottom-right vertex
+        //      0.0f,  0.5f, 0.0f  // Top vertex
+        // };
+        private readonly float[] _vertices = // Matriz del modelo, cambia la posición y rotación en el mundo
         {
-            -0.5f, -0.5f, 0.0f, // Bottom-left vertex
-             0.5f, -0.5f, 0.0f, // Bottom-right vertex
-             0.0f,  0.5f, 0.0f  // Top vertex
+             9.5f, 0.0f, 9.5f, // Bottom-left vertex
+             10.5f, 0.0f, 9.5f, // Bottom-right vertex
+             10.0f, 0.0f, 10.5f  // Top vertex
         };
 
         // These are the handles to OpenGL objects. A handle is an integer representing where the object lives on the

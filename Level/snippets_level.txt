@@ -1,0 +1,364 @@
+0. Eliminar POV namespace
+1. // Creamos la carpeta assets en el proyecto anterior (con el controlador)
+2. // Agregamos a esta carpeta los archivos level.json, sm_cube.json, sm_monkey.json, sm_pawn.json
+
+3. // Creamos el archivo Actor.cs para la clase Actor
+
+using OpenTK.Mathematics;
+using OpenTK.Windowing.Common;
+using OpenTK.Windowing.GraphicsLibraryFramework;
+
+public class Actor {
+
+4. // Campos de la clase Actor
+
+public bool Enabled {get; set;}
+
+
+public string StaticMeshId {get; set;}
+
+public Matrix4 Model=new Matrix4();
+
+
+
+5. // Constructor de la clase Actor
+
+public Actor(){
+        this.Enabled=false;
+        this.StaticMeshId="";
+    }
+
+6. // M'etodo SetTransform de la clase Actor
+
+ public void SetTransform(Vector3 positionVector, Vector3 axisVector, float angle, Vector3 scale){
+
+        Model=Matrix4.CreateScale(scale)*Matrix4.CreateFromAxisAngle(axisVector,angle)*Matrix4.CreateTranslation(positionVector);
+        
+}
+
+7. // Completamos el archivo Retrieval.cs
+
+public class RetrievedOrientation{
+        public float[] axis {get; init;}= {0.0f,1.0f,0.0f};
+        public float angle {get; set;}
+
+    }
+
+
+public class RetrievedActor{
+        public string id {get; init;}="Unknown";
+        public string sm {get; init;}="Unknown";
+        public bool enabled {get; init;}=false;
+
+
+        public float[] position {get;init;}={0.0f,0.0f,0.0f};
+
+
+        public float[] scale {get; init;}={1.0f,1.0f,1.0f};
+
+        public RetrievedOrientation orientation {get; init;}=new RetrievedOrientation();
+
+        
+    }
+
+public class RetrievedMeshMeta {
+        public string file {get; init;}="mesh.json";
+        public string id{get; init;}="Unknown";
+ 
+
+    }
+
+public class RetrievedLevel{
+            public RetrievedMeshMeta[] mesh_list {get; init;}= new RetrievedMeshMeta[0];
+
+            public RetrievedActor[] actor_list {get; init;} = new RetrievedActor[0];   
+
+            public float[] playerstartposition{get; init;}={0.0f,0.0f,0.0f};
+            public float playerstartrotationangle{get;init;}
+            public float[] playerstartrotationaxis{get;init;}={0.0f,1.0f,0.0f};
+
+
+}
+
+8. // Creamos el archivo Level.cs para la clase Level
+using System;
+using System.Text.Json;
+using OpenTK.Mathematics;
+
+public class Level{
+
+9. // Campos de la clase Level
+
+public Dictionary<string,Actor> ActorCollection {get; set;}
+
+public Vector3 PlayerStartPosition {get; set;}
+
+public float PlayerStartRotationAngle {get;set;}
+
+public Vector3 PlayerStartRotationAxis {get;set;}
+
+
+private string ?_levelFilePath="level.json";
+
+private RetrievedLevel ?_retrievedLevel=null;
+private List<RetrievedMesh> ?_levelMeshes= new List<RetrievedMesh>();
+private readonly JsonSerializerOptions _jsonOptions= new()
+{
+    PropertyNameCaseInsensitive=true
+};
+    
+10. // Constructor por defecto de la clase level
+
+ public Level()
+    {
+        ActorCollection=new Dictionary<string,Actor>();
+        PlayerStartPosition=new Vector3(0.0f,0.0f,0.0f);
+        PlayerStartRotationAngle=0;
+        PlayerStartRotationAxis=new Vector3(0.0f,1.0f,0.0f);
+
+    }
+
+11. // Constructor con argumentos para la clase Level
+
+public Level(string levelFilePath)
+    {
+        _levelFilePath=levelFilePath;
+        ActorCollection=new Dictionary<string,Actor>();
+        PlayerStartPosition=new Vector3(0.0f,0.0f,0.0f);
+        PlayerStartRotationAngle=0;
+        PlayerStartRotationAxis=new Vector3(0.0f,1.0f,0.0f);
+    }
+
+12 // Primera parte del m'etodo LoadLevel: carga del archivo json en una instancia de RetrievedLevel
+
+public void LoadLevel(Dictionary<string,Mesh> AssetCollection)
+    {
+     string ?text=null;
+     if(_levelFilePath is not null)
+        text=File.ReadAllText(_levelFilePath);
+    if((text is not null) && (_jsonOptions is not null))
+     _retrievedLevel =  JsonSerializer.Deserialize<RetrievedLevel>(text,_jsonOptions); 
+
+    if(_retrievedLevel is null)
+        throw new Exception("Error retrieving main level");
+
+13 // Segunda parte del m'etodo LoadLevel. Carga de las mallas
+
+for(int i=0;i<_retrievedLevel.mesh_list.Length;i++){
+
+        RetrievedMeshMeta meshMeta=_retrievedLevel.mesh_list[i];
+        if(meshMeta.file is not null)
+           text=File.ReadAllText(meshMeta.file);
+        RetrievedMesh ?retMesh= null;
+        if((text is not null) && (_jsonOptions is not null))
+        {
+             retMesh =  JsonSerializer.Deserialize<RetrievedMesh>(text,_jsonOptions); 
+        }
+        if(retMesh is null)
+           throw new Exception($"Error retrieving mesh from file {meshMeta.file}");
+
+        Mesh mesh= new Mesh(retMesh);
+        mesh.Make();
+
+        AssetCollection.Add(meshMeta.id,mesh);
+    }
+
+14 // Tercera parte del m'etodo LoadLevel. Carga de los datos de los actores.
+
+// Now, actors
+
+    for(int i=0;i<_retrievedLevel.actor_list.Length;i++){
+        RetrievedActor retActor=_retrievedLevel.actor_list[i];
+        Actor actor = new Actor();
+        actor.Enabled=retActor.enabled;
+        actor.StaticMeshId=retActor.sm;
+        actor.SetTransform(
+            new Vector3(retActor.position[0],retActor.position[1],retActor.position[2]),
+            new Vector3(retActor.orientation.axis[0],retActor.orientation.axis[1],retActor.orientation.axis[2]),
+            retActor.orientation.angle, 
+            new Vector3(retActor.scale[0],retActor.scale[1],retActor.scale[2]));
+
+        ActorCollection.Add(retActor.id,actor);
+
+    }
+
+15. // Cuarta parte y 'ultima del m'etodo LoadLevel. Posici\'on de inicio del jugador
+
+ // Now PlayerSart
+
+    PlayerStartPosition = new Vector3(_retrievedLevel.playerstartposition[0],_retrievedLevel.playerstartposition[0],_retrievedLevel.playerstartposition[0]);
+    PlayerStartRotationAngle = _retrievedLevel.playerstartrotationangle;
+    PlayerStartRotationAxis= new Vector3(_retrievedLevel.playerstartrotationaxis[0],_retrievedLevel.playerstartrotationaxis[0],_retrievedLevel.playerstartrotationaxis[0]); 
+
+        
+    }   
+
+16. // M\'etodo GetActiveMeshes de Level
+
+public List<string> GetActiveMeshes(){
+    List<string> activeIds=new List<string>();
+    foreach (var keyval in ActorCollection){
+        if(keyval.Value.Enabled ){
+            if(!activeIds.Contains(keyval.Value.StaticMeshId))
+                activeIds.Add(keyval.Value.StaticMeshId);
+        }
+    }
+    return activeIds;
+    }
+
+17. //En la clase Window, eliminar campos:
+vertexData, indexData, slotData, _Model,_RotAngle,_Mesh, _Axis, _jsonOptions, _vertexBuffer,_indexBuffer,_vertexArray
+
+y en el c'odigo todas las partes que hacen referencia a ellas:
+en el constructor:
+//_Model= new Matrix4();
+//_RotAngle=0.0f;
+//_retrievedMesh=new RetrievedMesh();
+//_mesh=new Mesh();
+
+En el m'etodo OnLoad
+
+// Retrieve mesh from json
+//string ?text=null;
+//text=File.ReadAllText("mesh.json");
+//if(text is null)
+//   throw new Exception("Error finding or reading file");
+//else
+//    _retrievedMesh =  JsonSerializer.Deserialize<RetrievedMesh>(text,_jsonOptions); 
+        
+//if(_retrievedMesh is null)
+//    throw new Exception("Error retrieving mesh");
+
+//_mesh=new Mesh(_retrievedMesh);
+//_mesh.Make();
+
+//vertexData=_mesh.vertexData;
+//indexData=_mesh.indexData;
+
+No tocar de momento el m'etodo OnRenderFrame
+
+18. Agregar a Window las siguientes propiedades
+
+public RetrievedMaterial[] ?matData;
+
+public Dictionary<string,Mesh> AssetCollection {get; set;}
+
+public string levelFilePath {get; set;}
+
+private Level _level=new Level();
+
+
+19. En el constructor de Window agregar la inicializaci'on
+
+levelFilePath="assets/level.json";
+AssetCollection=new Dictionary<string,Mesh>();
+
+20. Agregar el m'etodo:
+
+protected void InitializeLevel()
+{
+        _level=new POV.Level(levelFilePath);
+        _level.LoadLevel(AssetCollection);
+}
+
+21. En el m'etodo OnLoad agregar la llamada:
+
+InitializeLevel();
+
+22. En el m'etodo OnLoad, despu'es de la compilaci'on de los shaders, quitamos el c'odigo de generacion del VBO,EBO y VAO por
+
+List<string> activeMeshes = _level.GetActiveMeshes();
+
+foreach(string meshid in activeMeshes){
+         
+    if(AssetCollection[meshid] is null )
+               throw new Exception("Mesh with empty data"); 
+    if(AssetCollection[meshid].vertexData is null )
+               throw new Exception("Mesh with empty data"); 
+           
+    int _vertexBuffer=GL.GenBuffer();
+    AssetCollection[meshid].vertexBuffer=_vertexBuffer;
+    GL.BindBuffer(BufferTarget.ArrayBuffer,_vertexBuffer);
+    GL.BufferData(BufferTarget.ArrayBuffer,
+        AssetCollection[meshid].vertexData.Length*sizeof(float),
+        AssetCollection[meshid].vertexData,
+        BufferUsageHint.StaticDraw);
+        
+    int _vertexArray=GL.GenVertexArray();
+    AssetCollection[meshid].vertexArray=_vertexArray;
+    GL.BindVertexArray(_vertexArray);
+
+     int _indexBuffer=GL.GenBuffer();
+    AssetCollection[meshid].indexBuffer=_indexBuffer;
+    GL.BindBuffer(BufferTarget.ElementArrayBuffer,_indexBuffer);
+    GL.BufferData(BufferTarget.ElementArrayBuffer,
+    AssetCollection[meshid].indexData.Length*sizeof(int),
+    AssetCollection[meshid].indexData,BufferUsageHint.StaticDraw);
+
+23. Despu'es de este c'odigo viene el de los atributos que no hace falta cambiarlo, solo agregar el Unbind y la llave CreateFromAxisAngle
+
+ // Specify vertex attributes
+            var posLocation = _shader.GetAttribLocation("aPosition");
+            GL.EnableVertexAttribArray(posLocation);
+            GL.VertexAttribPointer(posLocation,3,VertexAttribPointerType.Float,false,4*sizeof(float),0); 
+            var weightLocation = _shader.GetAttribLocation("aWeight");
+            GL.EnableVertexAttribArray(weightLocation);
+            GL.VertexAttribPointer(weightLocation,1,VertexAttribPointerType.Float,false,4*sizeof(float),3*sizeof(float));
+            // Unbind VBO, EBO and VAO
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer,0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer,0);
+            GL.BindVertexArray(0);
+
+        }
+
+24. En OnUpdateFrame
+
+if (KeyboardState.IsKeyDown(Keys.Escape))
+        {
+            // If it is, close the window.
+            Close();
+        }
+24.b En Windows.cs 
+using OpenTK.Windowing.GraphicsLibraryFramework;
+
+25. En OnRenderFrame, despu'es del Clear y hasta el establecimiento de los atributos en los shaders hay que sustituir por
+
+List<string> activeMeshes = _level.GetActiveMeshes();
+
+    foreach(string actorid in _level.ActorCollection.Keys){
+        Actor actor=_level.ActorCollection[actorid];
+        if( !actor.Enabled)
+            continue;
+        Mesh ?mesh= AssetCollection[actor.StaticMeshId];
+        if(mesh is null)
+            throw new Exception("Trying to render an actor without mesh");
+        
+        // Binding mesh VAO
+        GL.BindVertexArray(mesh.vertexArray);
+    
+    _shader.SetMatrix4("model",actor.Model);
+    _shader.SetMatrix4("view",_camera.GetViewMatrix());
+    _shader.SetMatrix4("projection",_camera.GetProjectionMatrix());
+
+26. En OnRenderFrame, en el la renderizacion sustituir las referencias a _mesh por mesh
+
+27. En OnRederFrame, desp'ues del c'odigo de renderizaci'on hacer el Unbind del VAO y cerrar el bucle sobre los actores
+
+GL.BindVertexArray(0);
+}
+
+28. Agregar
+
+protected override void OnResize(ResizeEventArgs e)
+{
+    base.OnResize(e);
+    GL.Viewport(0,0,Size.X,Size.Y);
+}
+
+
+
+
+
+
+
+
