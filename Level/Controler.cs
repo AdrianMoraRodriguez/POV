@@ -14,14 +14,17 @@ public interface IController
 
 public class Controller : IController
 {
+    public float CameraDistance {get; set;}
+
     public Controller(int hRes, int vRes)
     {
-        Speed=1.0f;
+        Speed=3.0f;
         _hRes=hRes;
         _vRes=vRes;
         ScaleMovement=1.0f;
         MouseSensitivity=1000000.0f;
         _armAngles=new Angles2D(0.0f,0.0f);
+        CameraDistance = 2.0f;
     }
 
     public void UpdateState(KeyboardState kbstate,MouseState mstate, FrameEventArgs e)

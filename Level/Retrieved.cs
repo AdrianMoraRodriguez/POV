@@ -13,6 +13,7 @@ public class RetrievedMesh
     public float[]  weightdata {get; init;}= new float[0];
     public int[] nindex {get; init;}=new int[0];
     public int[][] indexdata {get; init;}= new int[0][];
+    public RetrievedCollision collision {get; init;} = new RetrievedCollision();
 }
 
 public class RetrievedOrientation
@@ -26,6 +27,7 @@ public class RetrievedActor
 {
     public string id {get; init;} = "Unknown";
     public string sm {get; init;} = "Unknown";
+    public string collision {get; init;} = "Unknown";
     public bool enabled {get; init;} = false;
     public float[] position {get;init;} = {0.0f,0.0f,0.0f};
     public float[] scale {get; init;} = {1.0f,1.0f,1.0f};
@@ -46,3 +48,12 @@ public class RetrievedLevel
     public float playerstartrotationangle{get;init;}
     public float[] playerstartrotationaxis{get;init;}={0.0f,1.0f,0.0f};
 }
+
+public class RetrievedCollision 
+{
+    public string type {get; init;} = "nocollision";
+    public float[] location {get; init;} = {0.0f,0.0f,0.0f};
+    public float[] scale {get; init;} = {0.0f,0.0f,0.0f};
+    public float[] rotation {get; init;} = {0.0f,0.0f,0.0f};
+}
+

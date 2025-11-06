@@ -30,3 +30,4 @@ C:\Users\alu0101465883\Documents\Pov\Level\obj\Debug\net8.0\refint\Level.dll
 C:\Users\alu0101465883\Documents\Pov\Level\obj\Debug\net8.0\Level.pdb
 C:\Users\alu0101465883\Documents\Pov\Level\obj\Debug\net8.0\Level.genruntimeconfig.cache
 C:\Users\alu0101465883\Documents\Pov\Level\obj\Debug\net8.0\ref\Level.dll
+C:\Users\alu0101465883\Documents\Pov\Level\bin\Debug\net8.0\Optional.dll
