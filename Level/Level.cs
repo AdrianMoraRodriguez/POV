@@ -43,7 +43,7 @@ public class Level{
             RetrievedMeshMeta meshMeta = _retrievedLevel.mesh_list[i];
             if(meshMeta.file is not null)
                text=File.ReadAllText(meshMeta.file);
-            RetrievedMesh ?retMesh = null; // Posible error
+            RetrievedMesh ?retMesh = null; 
             if((text is not null) && (_jsonOptions is not null))
             {
                 retMesh =  JsonSerializer.Deserialize<RetrievedMesh>(text,_jsonOptions); 
@@ -62,12 +62,17 @@ public class Level{
             Actor actor = new Actor();
             actor.Enabled=retActor.enabled;
             actor.StaticMeshId=retActor.sm;
+            actor.CollisionMeshId=retActor.collision;
+            actor.SetCollisionGeometry(AssetCollection);
             actor.SetTransform(
                 new Vector3(retActor.position[0],retActor.position[1],retActor.position[2]),
                 new Vector3(retActor.orientation.axis[0],retActor.orientation.axis[1],retActor.orientation.axis[2]),
                 retActor.orientation.angle, 
                 new Vector3(retActor.scale[0],retActor.scale[1],retActor.scale[2]));
             ActorCollection.Add(retActor.id,actor); // Los actores tienen su matriz Model inicializada con la transformación indicada en el JSON
+            // Trasladar la información geométrica del actor a la colisión
+            actor.UpdateCollisionModel();
+            
         }
         
         // Cargar posición inicial del jugador

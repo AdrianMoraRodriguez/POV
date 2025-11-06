@@ -1,5 +1,22 @@
+using OpenTK.Mathematics;
+using Optional;
+using LearnOpenTK.Common;
+using OpenTK.Graphics.OpenGL4;
+
 public class Mesh {
 
+    // Información de colisión
+    public class CollisionMeshInfo {
+        public string type {get; set; }="unknown";
+        public float[] location {get; set; }= {0.0f,0.0f,0.0f};
+        public float[] scale {get;  set; } = {1.0f,1.0f,1.0f};
+        public float[] rotation {get;  set; } = {0.0f,0.0f,0.0f};
+    }
+
+    private RetrievedCollision _collisionData  = new RetrievedCollision();
+    public CollisionMeshInfo collisionData {get; private set; }= new CollisionMeshInfo();
+
+    // Datos del mesh
     public float[] vertexData {get; private set; } = new float[0];
     public int[] indexData {get; private set;} = new int[0];
 
@@ -15,32 +32,29 @@ public class Mesh {
     public int vertexArray {get; set;} // VAO
 
     
-    public Mesh(){
-        
+    public Mesh(){}
 
-
-    }
-
-    public Mesh(RetrievedMesh retMesh)
-    : this() {
-
+    public Mesh(RetrievedMesh retMesh): this() {
         _retrievedMesh=retMesh;
-
     }
      
 
- public void Make(){
-        
+ public void Make() 
+ {
 
         var mesh=_retrievedMesh;
 
+        // Cargar datos de colisión
+        collisionData.type=_retrievedMesh.collision.type;
+        _retrievedMesh.collision.location.CopyTo(collisionData.location,0);
+        _retrievedMesh.collision.scale.CopyTo(collisionData.scale,0);
+        _retrievedMesh.collision.rotation.CopyTo(collisionData.rotation,0);
 
         matData=new RetrievedMaterial[mesh.materials.Length-1];
-
         for(int i=1;i<mesh.materials.Length;i++){
             matData[i-1]=mesh.materials[i]; // The first one is a default
-            
         }
+
         if(mesh.vertexdata is null || mesh.weightdata is null || mesh.indexdata is null)
             throw new Exception("Error: mesh data is wrong or empty");
         int nvertices=mesh.vertexdata.Length;
@@ -74,6 +88,28 @@ public class Mesh {
                 indexData[count++]=mesh.indexdata[i][j];
         }
 
+    }
+
+    public void Draw(Shader _shader, Option<Vector3> dcolor) // El shader es para cambiar el uniform (diffuse_color) y el Option es un tipo de dato que puede o no tener valor
+    {
+        Vector3 vcolor; 
+        if (indexData is not null && slotData is not null)
+        {
+            for (int i = 0; i < slotData.Length; i++)
+            {
+                vcolor = dcolor.ValueOr(new Vector3(  // ValueOr devuelve el valor si existe, o el que se pasa como parámetro si no existe
+                    matData[i].diffuse_color[0],
+                    matData[i].diffuse_color[1],
+                    matData[i].diffuse_color[2]));
+               _shader.SetVector3("diffuse_color", vcolor);
+                int nelements = 0;
+                if (i == (slotData.Length - 1))
+                    nelements = indexData.Length - slotData[i];
+                else
+                    nelements = slotData[i + 1] - slotData[i];
+                GL.DrawElements(PrimitiveType.Triangles, nelements, DrawElementsType.UnsignedInt, ref indexData[slotData[i]]);
+            }
+        }
     }
 
 }

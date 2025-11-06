@@ -48,6 +48,10 @@
             "OpenTk": {
               "target": "Package",
               "version": "[4.8.2, )"
+            },
+            "Optional": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [

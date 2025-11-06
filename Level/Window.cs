@@ -6,6 +6,7 @@ using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using Optional;
 
 
 
@@ -44,7 +45,8 @@ public class Window : GameWindow
 
 	    GL.ClearColor(0.2f,0.2f,0.2f,1.0f); // Color de borrado
         GL.Enable(EnableCap.CullFace);  // Elimina las caras traseras 
-        GL.Enable(EnableCap.DepthTest);  
+        GL.Enable(EnableCap.DepthTest);
+
 
 
         _shader=new Shader("Shaders/shader.vert","Shaders/shader.frag");
@@ -122,7 +124,10 @@ public class Window : GameWindow
         }
         base.OnRenderFrame(args);
 
-        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+        GL.Enable(EnableCap.DepthTest);
+        GL.Enable(EnableCap.StencilTest);
+
+        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit| ClearBufferMask.StencilBufferBit);
 
         List<string> activeMeshes = _level.GetActiveMeshes();
         foreach(string actorid in _level.ActorCollection.Keys){
@@ -137,34 +142,34 @@ public class Window : GameWindow
             _shader.SetMatrix4("model",actor.Model);
             _shader.SetMatrix4("view",_camera.GetViewMatrix());
             _shader.SetMatrix4("projection",_camera.GetProjectionMatrix());
-            // Paso 20. Lanzamos la orden Draw
-            if (mesh.indexData is not null && mesh.slotData is not null){
-                for(int i=0;i<mesh.slotData.Length;i++)
-                {
-                        RetrievedMaterial mat = mesh.matData[i];
-                        float[] color = mat.diffuse_color;
-                        Vector3 vcolor = new Vector3(color[0], color[1], color[2]);
-                        _shader.SetVector3("diffuse_color",vcolor);   
-            		int nelements=0;
-                            if(i==(mesh.slotData.Length-1))
-                                nelements=mesh.indexData.Length-mesh.slotData[i];
-                            else
-                                nelements=mesh.slotData[i+1]-mesh.slotData[i];
-                            GL.DrawElements(PrimitiveType.Triangles,nelements,DrawElementsType.UnsignedInt, ref mesh.indexData[mesh.slotData[i]]);
 
-                        }
-            }
+            // Configurar Stencil
+            GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace); // Se especifica como se va a modificar el buffer de stencil. El primer argumento es si falla el test de profundidad, el segundo si falla el test de stencil y el tercero si ninguno falla
+            GL.StencilFunc(StencilFunction.Always, 1, 0xFF); // Determina el test que se realiza.
+            GL.StencilMask(0xFF); // FF significa 8 bits a 1, es decir, que todos los bits se pueden escribir, el 0x00 significa que no se puede escribir ninguno
+            // Paso 20. Lanzamos la orden Draw
+            mesh.Draw(_shader, Option.None<Vector3>());
+            GL.StencilFunc(StencilFunction.Notequal, 1, 0xFF); // Solo se renderizan fragmentos que no coincidan con los valores que se han puesto a 1 (objetos renderizados)
+            GL.StencilMask(0x00); // No se escribe nada en el buffer de stencil
+            
+            actor.SaveModel();
+            actor.Scale(new Vector3(1.02f,1.02f,1.02f));
+            _shader.SetMatrix4("model",actor.Model);
+            mesh.Draw(_shader, Option.Some(new Vector3(0.0f,0.0f,0.0f)));
+            actor.RestoreModel();
+            
             GL.BindVertexArray(0);
         }
+        GL.StencilMask(0xFF); // Se vuelve a permitir la escritura en el buffer de stencil
         // Paso 21. Hacemos el swap del doble buffer.
         SwapBuffers();
     }
 	
     protected override void OnUnload()
     {
-    
-            GL.BindBuffer(BufferTarget.ArrayBuffer,0);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer,0);
+
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
             GL.BindVertexArray(0);
 
             base.OnUnload();
@@ -180,15 +185,33 @@ public class Window : GameWindow
     {
         // Camera
         Vector3 movement = _controller.GetMovement();
-        _camera.Position += _camera.Front * movement.X;
-        _camera.Position += _camera.Right * movement.Y;
-        _camera.Position += _camera.Up * movement.Z;
+        
         // Arm
         Angles2D deltaAngles = _controller.GetArmOrientation();
-        Angles2D cameraAngles = new Angles2D(_camera.Yaw, _camera.Pitch);
+        Angles2D cameraAngles = new Angles2D(_camera.Yaw, _camera.Pitch); // Lo voy a tener que modificar
         cameraAngles += deltaAngles;
         _camera.Yaw = (float)cameraAngles.Yaw; // Se recalculan los vectores de la cámara en la clase Camera (función UpdateVectors)
         _camera.Pitch = (float)cameraAngles.Pitch;
+        Actor pawn;
+        if( _level.ActorCollection.TryGetValue("apawn", out pawn)) // Se busca al actor principal
+        {
+            Matrix4 pawnModel=pawn.Model; // Cojo matriz del actor principal
+            Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
+            pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
+            Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
+            _camera.Position= new Vector3(_camera.Position.X, pawnNewPosition.Y + _controller.CameraDistance, pawnNewPosition.Z + 2 * _controller.CameraDistance);
+            _camera.Position += new Vector3(translation.X, 0.0f, translation.Z);
+            // Rotate camera around pawn not arround himself
+            //Vector3 direction = _camera.Position - pawnNewPosition;
+            //direction = Vector3.Transform(direction, Matrix4.CreateRotationY(MathHelper.DegreesToRadians((float)deltaAngles.Yaw)));
+            //_camera.Position = pawnNewPosition + direction;
+            
+            
+        } else {   
+            _camera.Position += _camera.Front * movement.X;
+            _camera.Position += _camera.Right * movement.Y;
+            _camera.Position += _camera.Up * movement.Z;
+        }
     }
 
 
