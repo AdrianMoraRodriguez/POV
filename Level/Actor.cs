@@ -1,4 +1,5 @@
 using Optional;
+//using Optional.Unsafe;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.GraphicsLibraryFramework;
@@ -81,13 +82,13 @@ public class Actor
             Matrix4 ModelTranslation=Matrix4.CreateTranslation(location[0],location[1],location[2]);
             // Recalculate CollisionGeometry Parameters
             StartCollisionModel=ModelScale*ModelRotation*ModelTranslation;
-            CollisionGeometry.ValueOrFailure("Unexpected empty CollisionGeometry").Transform(StartCollisionModel);
+            //CollisionGeometry.ValueOrFailure("Unexpected empty CollisionGeometry").Transform(StartCollisionModel);
         }
     }
 
     public void UpdateCollisionModel()
     {
-        CollisionGeometry.ValueOrFailure("Unexpected empty CollisionGeometry").Transform(StartCollisionModel*Model);
+        //CollisionGeometry.ValueOrFailure("Unexpected empty CollisionGeometry").Transform(StartCollisionModel*Model);
     }
 
 
