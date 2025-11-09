@@ -9,7 +9,6 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 using Optional;
 
 
-
 public class Window : GameWindow
 {
 
@@ -195,19 +194,21 @@ public class Window : GameWindow
         Actor pawn;
         if( _level.ActorCollection.TryGetValue("apawn", out pawn)) // Se busca al actor principal
         {
-            Matrix4 pawnModel=pawn.Model; // Cojo matriz del actor principal
-            Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
+            Vector3 forward = _camera.Front;
+            forward.Y = 0.0f; // No quiero que el avance tenga componente vertical
+            forward = Vector3.Normalize(forward);
+            Matrix4 pawnModel = pawn.Model; // Cojo matriz del actor principal
+            Vector3 translation = forward * movement.X + _camera.Right * movement.Y + _camera.Up * movement.Z;
+            // Versión antigua sin tener en cuenta la cámara: Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
             pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
             Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
-            _camera.Position= new Vector3(_camera.Position.X, pawnNewPosition.Y + _controller.CameraDistance, pawnNewPosition.Z + 2 * _controller.CameraDistance);
-            _camera.Position += new Vector3(translation.X, 0.0f, translation.Z);
-            // Rotate camera around pawn not arround himself
-            //Vector3 direction = _camera.Position - pawnNewPosition;
-            //direction = Vector3.Transform(direction, Matrix4.CreateRotationY(MathHelper.DegreesToRadians((float)deltaAngles.Yaw)));
-            //_camera.Position = pawnNewPosition + direction;
-            
-            
-        } else {   
+            //Versión antigua poner que la cámara gire alrededor del actor
+            //_camera.Position= new Vector3(_camera.Position.X, pawnNewPosition.Y + _controller.CameraDistance, pawnNewPosition.Z + 2 * _controller.CameraDistance);
+            //_camera.Position += new Vector3(translation.X, 0.0f, translation.Z);
+            // pawnNewPosition - _camera.Front
+            Vector3 BehindOffset = forward * _controller.CameraDistance;
+            _camera.Position = pawnNewPosition - BehindOffset + new Vector3(0.0f, _controller.CameraDistance / 2, 0.0f); // Le sumo la mitad de la distancia en Y para que esté un poco más alto
+        } else {
             _camera.Position += _camera.Front * movement.X;
             _camera.Position += _camera.Right * movement.Y;
             _camera.Position += _camera.Up * movement.Z;
