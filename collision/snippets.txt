@@ -1,0 +1,453 @@
+// Slots de materiales> Los shaders
+
+// shader.vert
+#version 330 core
+
+layout(location=0) in vec3 aPosition;
+layout(location=1) in float aWeight;
+
+uniform mat4 view;
+uniform mat4 model;
+uniform mat4 projection;
+
+
+
+void main(){
+    vec4 position=vec4(aPosition,1.0f) * model * view * projection;
+
+    gl_Position=position;
+}
+
+//shader.frag
+#version 330 core 
+
+in vec3 DiffuseColor;
+out vec4 OutFragColor;
+void main()
+{
+    OutFragColor=vec4(DiffuseColor,1.0f);
+}
+
+// En el c'odigo de renderizacion
+
+if (mesh.indexData is not null && mesh.slotData is not null){
+            for(int i=0;i<mesh.slotData.Length;i++)
+            {   
+                float[] dc=mesh.matData[i].diffuse_color;
+                _shader.SetVector3("diffuse_color",new Vector3(dc[0],dc[1],dc[2]));
+        
+                int nelements=0;
+                if(i==(mesh.slotData.Length-1))
+                    nelements=mesh.indexData.Length-mesh.slotData[i];
+                else
+                    nelements=mesh.slotData[i+1]-mesh.slotData[i];
+                GL.DrawElements(PrimitiveType.Triangles,nelements,DrawElementsType.UnsignedInt, ref mesh.indexData[mesh.slotData[i]]);
+
+            }
+}
+
+// Tercera persona
+// En Windows.cs UpdateFrame
+protected void UpdateGameState(float deltaTime){
+    
+    // Camera
+    Vector3 movement=_controller.GetMovement();
+    Angles2D deltaAngles=_controller.GetArmOrientation();
+    
+    Angles2D cameraAngles = new Angles2D(_camera.Yaw,_camera.Pitch);
+    cameraAngles += deltaAngles;
+    _camera.Yaw = (float)cameraAngles.Yaw;
+    _camera.Pitch = (float)cameraAngles.Pitch;
+}
+
+// En la misma funcion
+Actor pawn;
+    if( _level.ActorCollection.TryGetValue("apawn", out pawn))
+    {
+        Matrix4 pawnModel=pawn.Model;
+        Vector3 translation = (movement.Y,0.0f,-movement.X);
+        pawn.Model = pawn.Model*Matrix4.CreateTranslation(translation);
+        Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
+    } else
+{
+    
+    _camera.Position += _camera.Front*movement.X;
+    _camera.Position += _camera.Right*movement.Y;
+    _camera.Position += _camera.Up*movement.Z;
+    
+    
+    }
+
+// A;adir un atributo a Controller
+
+public float CameraDistance {get; set;}
+
+// Inicializarlo en el constructor de Controller
+Controller=3.0f;
+
+// En la primera parte del if, terminamos moviendo la camara
+        
+        _camera.Position= new Vector3(_camera.Position.X,pawnNewPosition.Y+_controller.CameraDistance,pawnNewPosition.Z+2*_controller.CameraDistance);
+        _camera.Position += new Vector3(translation.X,0.0f,translation.Z);
+
+// Iluminacion
+
+// Nuevos shaders
+// shader.vert
+#version 330 core
+
+layout(location=0) in vec3 aPosition;
+layout(location=1) in float aWeight;
+layout(location=2) in vec2 aTexCoord;
+layout(location=3) in vec3 aNormal;
+
+uniform mat4 view;
+uniform mat4 model;
+uniform mat4 projection;
+
+
+uniform mat4 normalTransformMatrix;
+
+out float VertexWeight ;
+out vec2 TexCoord;
+out vec4 VertexNormal; 
+
+void main(){
+    vec4 position=vec4(aPosition,1.0f) * model * view * projection;
+    VertexNormal=  normalTransformMatrix * vec4(aNormal,0.0);
+    VertexWeight=aWeight;
+    TexCoord=aTexCoord;
+    gl_Position=position;
+}
+// shader_diff.frag
+#version 330 core 
+in float VertexWeight;
+in vec2 TexCoord;
+in vec4 VertexNormal;
+out vec4 OutFragColor;
+
+uniform vec3 diffuse_color;
+
+uniform vec3 AmbientLight;
+uniform vec3 DirLight0Diffuse;
+uniform vec3 DirLight0Direction;
+
+void main()
+{
+
+    float cl = max(dot(DirLight0Direction,VertexNormal.xyz),0.0);
+    vec4 newcolor = vec4(AmbientLight*diffuse_color+cl*DirLight0Diffuse.rgb*diffuse_color.rgb,1.0);
+    
+    OutFragColor=newcolor;
+    
+    
+}
+
+// Modifiaciones en retrieval
+
+public class RetrievedMesh{
+
+    public RetrievedMaterial[] materials {get; init;} = new RetrievedMaterial[0];
+    public int nvertex {get; set;}
+
+    public float[] vertexdata {get; init;} = new float[0];
+
+    public float[] normaldata {get; init;} = new float[0];
+
+
+    public float[]  weightdata {get; init;}= new float[0];
+    public int[] nindex {get; init;}=new int[0];
+
+    public int[][] indexdata {get; init;}= new int[0][];
+
+    public float[] uv {get; init;} = new float[0];
+
+}
+
+// Modificaciones en la clase mesh
+
+public void Make(){
+        
+
+        var mesh=_retrievedMesh;
+
+
+        matData=new RetrievedMaterial[mesh.materials.Length-1];
+        for(int i=1;i<mesh.materials.Length;i++)
+            matData[i-1]=mesh.materials[i]; // The first one is a default
+
+        if(mesh.vertexdata is null || mesh.weightdata is null || mesh.indexdata is null)
+            throw new Exception("Error: mesh data is wrong or empty");
+ 
+        slotData=new int[mesh.materials.Length-1];
+        
+        int nindex=0;
+        for(int i=0;i<(mesh.materials.Length-1);i++)
+        {
+            slotData[i]=nindex;
+            nindex+=mesh.indexdata[i].Length;
+        
+        }
+
+        indexData=new int[nindex];
+        int count=0;
+        for(int i=0;i<(mesh.materials.Length-1);i++){
+            for(int j=0;j<mesh.indexdata[i].Length;j++)
+                indexData[count++]=mesh.indexdata[i][j];
+        }
+
+        int nvertices=mesh.vertexdata.Length;
+        int nweight=mesh.weightdata.Length;
+        int nnormal=mesh.normaldata.Length;
+        int nuv=mesh.uv.Length;
+
+        if((nvertices/3) != nweight)
+            throw new Exception("Number of vertex weights is different of number of vertices");
+
+        
+        vertexData=new float[nvertices+nweight+nnormal+nuv];
+        int nvalues = 9; // 3 components per vers, 1 per weight
+        for(int i=0,j=0,k=0,l=0,m=0;i<mesh.vertexdata.Length;i=i+3,j=j+1,l=l+2,m=m+3,k=k+nvalues){
+            vertexData[k]=mesh.vertexdata[i];
+            vertexData[k+1]=mesh.vertexdata[i+1];
+            vertexData[k+2]=mesh.vertexdata[i+2];
+            vertexData[k+3]=mesh.weightdata[j];
+            vertexData[k+4]=mesh.uv[l];
+            vertexData[k+5]=mesh.uv[l+1];
+            vertexData[k+6]=mesh.normaldata[m];
+            vertexData[k+7]=mesh.normaldata[m+1];
+            vertexData[k+8]=mesh.normaldata[m+2];
+        }
+        
+
+    }
+
+// En Windos OnLoad, hay un nuevo layout
+
+            var posLocation = _shader.GetAttribLocation("aPosition");
+            if(posLocation != (-1)){
+                GL.EnableVertexAttribArray(posLocation);
+                GL.VertexAttribPointer(posLocation,3,VertexAttribPointerType.Float,false,9*sizeof(float),0); 
+            }
+            var weightLocation = _shader.GetAttribLocation("aWeight");
+            
+            if(weightLocation!=(-1)){
+                GL.EnableVertexAttribArray(weightLocation);
+                GL.VertexAttribPointer(weightLocation,1,VertexAttribPointerType.Float,false,9*sizeof(float),3*sizeof(float));
+            }
+            var texCoordLocation = _shader.GetAttribLocation("aTexCoord");
+            if(texCoordLocation!=(-1)){
+                GL.EnableVertexAttribArray(texCoordLocation);
+                GL.VertexAttribPointer(texCoordLocation,2,VertexAttribPointerType.Float,false,9*sizeof(float),4*sizeof(float));
+            }
+            var normalLocation = _shader.GetAttribLocation("aNormal");
+            if(normalLocation!=(-1)){
+                GL.EnableVertexAttribArray(normalLocation);
+                GL.VertexAttribPointer(normalLocation,3,VertexAttribPointerType.Float,false,9*sizeof(float),6*sizeof(float));
+            }
+    
+// En la clase Actor nuevo atributo para la transformaci'on de las normales
+
+public Matrix4 NormalTransform = new Matrix4();
+
+// Nuevo metodo para transformar normales
+
+public void UpdateNormalTransform(){
+        NormalTransform=Matrix4.Transpose(Matrix4.Invert(Model));
+    }
+
+// Utrilizarlo al final de SetTransform
+
+UpdateNormalTransform();
+
+// En el m'etodo OnRenderFrame agregar actualizacion de uniforms
+
+ _shader.SetMatrix4("model",actor.Model);
+  _shader.SetMatrix4("view",_camera.GetViewMatrix());
+  _shader.SetMatrix4("projection",_camera.GetProjectionMatrix());
+  _shader.SetMatrix4("normalTransformMatrix",actor.NormalTransform);
+  _shader.SetVector3("AmbientLight",new Vector3(0.1f,0.1f,0.1f));
+  _shader.SetVector3("DirLight0Diffuse",new Vector3(0.6f,0.6f,0.6f));
+ _shader.SetVector3("DirLight0Direction",Vector3.Normalize(new Vector3(1.0f,1.0f,1.0f)));
+
+
+ // Colisiones
+ // Crear archivo Collision.cs y el enum
+ using OpenTK.Mathematics;
+
+namespace POV{
+public enum CollisionType : byte {
+    NoCollision,
+    Box,
+    Sphere
+    }
+
+// Crear la clase Collision
+
+class Collision{
+
+static public bool CollisionLess( Vector3 ?v1, Vector3 ?v2){
+        bool identical=true;
+        bool result=true;
+        if(v1 is null || v2 is null)
+            return true;
+
+        for(int i=0;i<3;i++){
+            if(v1.Value[i]>v2.Value[i]){
+                result=false;
+                break;
+            }
+            if(identical && v1.Value[i]<v2.Value[i])
+                identical=false;
+        }
+
+
+        return (!identical && result);
+    }
+
+static public void CollisionMinMax(List<Vector3> list, out Vector3 ?Min, out Vector3 ?Max){
+        Min=null;
+        Max=null;
+        foreach(Vector3 v in list){
+            if(CollisionLess(v,Min)){
+                Min=v;
+            }
+            if(CollisionLess(Max,v)){
+                Max=v;
+            }
+        }
+
+
+    }
+
+public static bool CheckCollisionAABB(Actor actor1,Actor actor2){
+            // TODO: considerar no solo la transformacion de traslacion
+            bool result=false;
+
+            Vector3 v1=actor1.Model.ExtractTranslation();
+            Vector3 v2=actor2.Model.ExtractTranslation();
+            List<Vector3>? actorBox1=actor1.GetCollisionBox();
+            List<Vector3>? actorBox2=actor2.GetCollisionBox();
+            if(actorBox1 is not null && actorBox2 is not null){
+
+                List<Vector3> box1=new List<Vector3>();
+                List<Vector3> box2=new List<Vector3>();
+
+                // Translate each box
+                // TODO: scale !!!!!d
+
+                foreach(Vector3 v in actorBox1)
+                    box1.Add(v+v1);
+                
+                foreach(Vector3 v in actorBox2)
+                    box2.Add(v+v2);
+
+                // Check AABB Collision
+                
+                if(CollisionLess(box1[0],box2[1]) && CollisionLess(box2[0],box1[1]))
+                    result=true;
+
+            }
+                
+            return result;
+        }
+
+} // Class
+}
+
+// Crear el archivo Utils y en el una utilidad
+
+using OpenTK.Mathematics;
+namespace POV{
+
+class Utils {
+    static public List<Vector3> GenerateVector3List(float [] data){
+
+        List<Vector3> list = new List<Vector3>();
+
+        for(int i=0;i<data.Length;i+=3){
+            if(i+2>data.Length)
+                break;
+            list.Add(new Vector3(data[i],data[i+1],data[i+2]));
+        }
+        return list;
+
+    }
+}
+}
+
+// En Actor
+
+public CollisionType CollisionType;
+
+public List<Vector3> CollisionData = new List<Vector3>();
+
+// En Actor
+
+public void GenerateCollisionData(CollisionType collisionType,Mesh mesh ){
+        
+
+            CollisionData=new List<Vector3>();
+            List<Vector3> vertices= Utils.GenerateVector3List(mesh.vertexData);
+            Vector3 ?Min=null;
+            Vector3 ?Max=null;
+
+            Collision.CollisionMinMax(vertices,out Min, out Max);
+            if(Min is not null && Max is not null){
+                CollisionData.Add(Min.Value);
+                CollisionData.Add(Max.Value);
+            }
+
+        
+
+    }
+
+    public List<Vector3>? GetCollisionBox(){
+        if(CollisionData.Count<2)
+            return null;
+        List<Vector3> result=CollisionData.GetRange(0,2); // Design decision, return only the required vertices for a Box.
+        return result;
+    }
+
+// En el json del nivel a;adir la propiedad a los actores
+"collisionbox" : true
+
+// En el Retrieval.cs en RetrievedActor
+
+public bool collisionbox {get; set;}=false;
+
+// En Level.cs en el bucle de actores
+
+if(retActor.collisionbox){
+            actor.CollisionType=CollisionType.Box;
+            if(AssetCollection.ContainsKey(actor.StaticMeshId))
+                actor.GenerateCollisionData(CollisionType.Box,AssetCollection[actor.StaticMeshId]);
+            else
+                throw new Exception($"Error creating a collision box: mesh {actor.StaticMeshId} doesn't exist");
+            
+        }
+
+// En Window.cs
+
+protected bool CheckPawnCollision(){
+    bool result=false;
+    Actor? actorPawn=null;
+    if(_level.ActorCollection.ContainsKey("apawn")){
+        actorPawn=_level.ActorCollection["apawn"];
+      
+        foreach(var actor in _level.ActorCollection){
+            if(actor.Key=="apawn")
+                continue;
+            if(Collision.CheckCollisionAABB(actorPawn,actor.Value)){
+                result=true;
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+// Revisar el m'etodo de movimiento para hacer uso de las colisiones
+
+
+
