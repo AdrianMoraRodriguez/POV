@@ -122,7 +122,7 @@ protected void UpdateGameState(float deltaTime){
         if (Math.Abs(yaw) - Math.Abs(euler.Y) > 1e-6)
         {
             float angleDifference = -(float)((yaw - euler.Y)); 
-            //pawn.Model = pawn.Model * Matrix4.CreateRotationY(angleDifference);
+            pawn.Model = pawn.Model * Matrix4.CreateRotationY(angleDifference);
         }
         Console.WriteLine($"Pawn euler after: {pawn.Model.ExtractRotation().ToEulerAngles()} Yaw: {yaw}");
         Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
