@@ -5,7 +5,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 using Optional;
 using Optional.Unsafe;
 
-public class Actor{
+public class Actor {
 
 public bool Enabled {get; set;}
 
