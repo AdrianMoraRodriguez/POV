@@ -12,8 +12,6 @@ using Optional.Unsafe;
 
 public class Window : GameWindow
 {
-int frames = 60;
-float prevAngle = 0.0f;
 public RetrievedMaterial[] ?matData;
 
 public Dictionary<string,Mesh> AssetCollection {get; set;}
@@ -81,10 +79,11 @@ protected void UpdateGameState(float deltaTime){
         Vector3 translation = forward * movement.X + _camera.Right * movement.Y + _camera.Up * movement.Z;
         // Versión antigua sin tener en cuenta la cámara: Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
         //pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
-        // si nos movemos con W el pawn se orienta hacia la dirección de la cámara
-        Vector3 pawnPosition = pawn.Model.ExtractTranslation();
-        float targetYaw = MathF.Atan2(-forward.X, -forward.Z);
-        pawn.Model = Matrix4.CreateScale(scale) * Matrix4.CreateRotationY(targetYaw) * Matrix4.CreateTranslation(pawn.Model.ExtractTranslation());
+        if (translation.X != 0.0f)
+        {
+            float targetYaw = MathF.Atan2(-forward.X, -forward.Z);
+            pawn.Model = Matrix4.CreateScale(scale) * Matrix4.CreateRotationY(targetYaw) * Matrix4.CreateTranslation(pawn.Model.ExtractTranslation());
+        }   
         pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
         //Versión antigua poner que la cámara gire alrededor del actor
         //_camera.Position= new Vector3(_camera.Position.X, pawnNewPosition.Y + _controller.CameraDistance, pawnNewPosition.Z + 2 * _controller.CameraDistance);
@@ -116,7 +115,7 @@ protected void UpdateGameState(float deltaTime){
         Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
         Vector3 behindOffset = _camera.Front * _controller.CameraDistance;
         behindOffset.Y = 0.0f;
-        Console.WriteLine($"Pawn Pos: {pawnNewPosition} ");
+        //Console.WriteLine($"Pawn Pos: {pawnNewPosition} ");
         _camera.Position = pawnNewPosition - behindOffset + new Vector3(0.0f, _controller.CameraDistance / 2, 0.0f); // Le sumo la mitad de la distancia en Y para que esté un poco más alto
         //Console.WriteLine($"Cam Pos after: {_camera.Position} ");
         //Console.WriteLine($"Pawn Pos: {pawnNewPosition}");
@@ -322,13 +321,6 @@ List<string> activeMeshes = _level.GetActiveMeshes(AssetCollection);
     
 // Paso 21. Hacemos el swap del doble buffer.
 SwapBuffers();
-// if (frames == 0) // BORRAR
-// {
-//     Close();
-// } else
-// {
-//     frames--;
-// }
 
 }
 
