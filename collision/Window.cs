@@ -75,11 +75,16 @@ protected void UpdateGameState(float deltaTime){
     if( _level.ActorCollection.TryGetValue("apawn", out pawn))
     {
         Vector3 forward = _camera.Front;
+        Vector3 scale = pawn.Model.ExtractScale();
         forward.Y = 0.0f; // No quiero que el avance tenga componente vertical
         forward = Vector3.Normalize(forward);
-        Matrix4 pawnModel = pawn.Model; // Cojo matriz del actor principal
         Vector3 translation = forward * movement.X + _camera.Right * movement.Y + _camera.Up * movement.Z;
         // Versión antigua sin tener en cuenta la cámara: Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
+        //pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
+        // si nos movemos con W el pawn se orienta hacia la dirección de la cámara
+        Vector3 pawnPosition = pawn.Model.ExtractTranslation();
+        float targetYaw = MathF.Atan2(-forward.X, -forward.Z);
+        pawn.Model = Matrix4.CreateScale(scale) * Matrix4.CreateRotationY(targetYaw) * Matrix4.CreateTranslation(pawn.Model.ExtractTranslation());
         pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
         //Versión antigua poner que la cámara gire alrededor del actor
         //_camera.Position= new Vector3(_camera.Position.X, pawnNewPosition.Y + _controller.CameraDistance, pawnNewPosition.Z + 2 * _controller.CameraDistance);
@@ -108,27 +113,12 @@ protected void UpdateGameState(float deltaTime){
 
                 }
         }
-        //Vector3 cameraForward = _camera.Front;
-        float yaw = (float)(_camera.Yaw * Math.PI / 180.0f + Math.PI / 2); // Añado PI para que mire hacia el actor;
-        Quaternion pawnRotation = pawn.Model.ExtractRotation();
-        Vector3 euler = pawnRotation.ToEulerAngles();
-        //Console.WriteLine($"Pawn euler before: {euler} Yaw: {yaw}");
-        //float angle = (float)Math.Atan2(euler.X, euler.Z);
-        //Console.WriteLine($"euler: {euler} Yaw: {yaw}");
-        //Console.WriteLine($"Pawn euler: {euler} Camera Forward: {cameraForward} ");
-        //Console.WriteLine($"Angle: {angle} PrevAngle: {prevAngle}");
-        //Console.WriteLine($"Dot: {dot} Angle: {angle} euler: {euler} cameraForward: {cameraForward}");
-        //Vector3 cross = Vector3.Cross(forward, cameraForward);
-        if (Math.Abs(yaw - euler.Y) > 1e-6)
-        {
-            float angleDifference = -(float)((yaw - euler.Y) - Math.PI); // Resto PI para que mire hacia el actor
-            pawn.Model = pawn.Model * Matrix4.CreateRotationY(angleDifference);
-        }
-        Console.WriteLine($"Pawn euler after: {pawn.Model.ExtractRotation().ToEulerAngles()} Yaw: {yaw}");
         Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
-        Vector3 BehindOffset = forward * _controller.CameraDistance;
-
-        _camera.Position = pawnNewPosition - BehindOffset + new Vector3(0.0f, _controller.CameraDistance / 2, 0.0f); // Le sumo la mitad de la distancia en Y para que esté un poco más alto
+        Vector3 behindOffset = _camera.Front * _controller.CameraDistance;
+        behindOffset.Y = 0.0f;
+        Console.WriteLine($"Pawn Pos: {pawnNewPosition} ");
+        _camera.Position = pawnNewPosition - behindOffset + new Vector3(0.0f, _controller.CameraDistance / 2, 0.0f); // Le sumo la mitad de la distancia en Y para que esté un poco más alto
+        //Console.WriteLine($"Cam Pos after: {_camera.Position} ");
         //Console.WriteLine($"Pawn Pos: {pawnNewPosition}");
         pawn.UpdateCollisionModel();
 

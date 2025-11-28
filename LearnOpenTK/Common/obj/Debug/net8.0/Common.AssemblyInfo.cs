@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LearnOpenTK.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1fa6b1bc216d5a8bb2d926a529a0f5302b2f64ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78b3d57902ff201a6a7953b5ad99f9e51277e5db")]
 [assembly: System.Reflection.AssemblyProductAttribute("LearnOpenTK.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LearnOpenTK.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
