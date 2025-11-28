@@ -109,7 +109,7 @@ protected void UpdateGameState(float deltaTime){
                 }
         }
         //Vector3 cameraForward = _camera.Front;
-        float yaw = (float)(_camera.Yaw * Math.PI / 180.0f); // Añado PI para que mire hacia el actor;
+        float yaw = (float)(_camera.Yaw * Math.PI / 180.0f + Math.PI / 2); // Añado PI para que mire hacia el actor;
         Quaternion pawnRotation = pawn.Model.ExtractRotation();
         Vector3 euler = pawnRotation.ToEulerAngles();
         //Console.WriteLine($"Pawn euler before: {euler} Yaw: {yaw}");
@@ -119,9 +119,9 @@ protected void UpdateGameState(float deltaTime){
         //Console.WriteLine($"Angle: {angle} PrevAngle: {prevAngle}");
         //Console.WriteLine($"Dot: {dot} Angle: {angle} euler: {euler} cameraForward: {cameraForward}");
         //Vector3 cross = Vector3.Cross(forward, cameraForward);
-        if (Math.Abs(yaw) - Math.Abs(euler.Y) > 1e-6)
+        if (Math.Abs(yaw - euler.Y) > 1e-6)
         {
-            float angleDifference = -(float)((yaw - euler.Y)); 
+            float angleDifference = -(float)((yaw - euler.Y) - Math.PI); // Resto PI para que mire hacia el actor
             pawn.Model = pawn.Model * Matrix4.CreateRotationY(angleDifference);
         }
         Console.WriteLine($"Pawn euler after: {pawn.Model.ExtractRotation().ToEulerAngles()} Yaw: {yaw}");
