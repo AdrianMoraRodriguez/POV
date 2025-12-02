@@ -1,0 +1,43 @@
+// Tercera persona
+// En Windows.cs UpdateFrame
+protected void UpdateGameState(float deltaTime){
+    
+    // Camera
+    Vector3 movement=_controller.GetMovement();
+    Angles2D deltaAngles=_controller.GetArmOrientation();
+    
+    Angles2D cameraAngles = new Angles2D(_camera.Yaw,_camera.Pitch);
+    cameraAngles += deltaAngles;
+    _camera.Yaw = (float)cameraAngles.Yaw;
+    _camera.Pitch = (float)cameraAngles.Pitch;
+}
+
+// En la misma funcion
+Actor pawn;
+    if( _level.ActorCollection.TryGetValue("apawn", out pawn))
+    {
+        Matrix4 pawnModel=pawn.Model;
+        Vector3 translation = (movement.Y,0.0f,-movement.X);
+        pawn.Model = pawn.Model*Matrix4.CreateTranslation(translation);
+        Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
+    } else
+{
+    
+    _camera.Position += _camera.Front*movement.X;
+    _camera.Position += _camera.Right*movement.Y;
+    _camera.Position += _camera.Up*movement.Z;
+    
+    
+    }
+
+// A;adir un atributo a Controller
+
+public float CameraDistance {get; set;}
+
+// Inicializarlo en el constructor de Controller
+Controller=3.0f;
+
+// En la primera parte del if, terminamos moviendo la camara
+        
+        _camera.Position= new Vector3(_camera.Position.X,pawnNewPosition.Y+_controller.CameraDistance,pawnNewPosition.Z+2*_controller.CameraDistance);
+        _camera.Position += new Vector3(translation.X,0.0f,translation.Z);

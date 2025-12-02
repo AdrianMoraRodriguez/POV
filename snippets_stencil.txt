@@ -1,0 +1,90 @@
+// 1. Incluir package Optional, adem'as poner en assets sm_airship.json y level.json
+
+// 2. Crear M'etodo Draw en Mesh para organizar el renderizado
+
+public void Draw(Shader _shader, Option<Vector3> dcolor)
+    {
+        Vector3 vcolor;
+            
+        if (indexData is not null && slotData is not null)
+            {
+                for (int i = 0; i < slotData.Length; i++)
+                {
+                    vcolor = dcolor.ValueOr(new Vector3(
+                        matData[i].diffuse_color[0],
+                        matData[i].diffuse_color[1],
+                        matData[i].diffuse_color[2]));
+                   _shader.SetVector3("diffuse_color", vcolor);
+                    int nelements = 0;
+                    if (i == (slotData.Length - 1))
+                        nelements = indexData.Length - slotData[i];
+                    else
+                        nelements = slotData[i + 1] - slotData[i];
+                    GL.DrawElements(PrimitiveType.Triangles, nelements, DrawElementsType.UnsignedInt, ref indexData[slotData[i]]);
+
+                }
+            }
+    }
+
+    // 3. Dejar el Loop sobre los actores del siguientes modo
+
+    Actor actor=_level.ActorCollection[actorid];
+        if( !actor.Enabled)
+            continue;
+        Mesh ?mesh= AssetCollection[actor.StaticMeshId];
+        if(mesh is null)
+            throw new Exception("Trying to render an actor without mesh");
+        
+        // Binding mesh VAO
+        GL.BindVertexArray(mesh.vertexArray);
+    
+        _shader.SetMatrix4("model",actor.Model);
+        _shader.SetMatrix4("view",_camera.GetViewMatrix());
+        _shader.SetMatrix4("projection",_camera.GetProjectionMatrix());
+
+ 
+        mesh.Draw(_shader,Option.None<Vector3>());
+    
+
+        GL.BindVertexArray(0);
+
+    //4. Incluir en la clase actor la siguiente propiedad
+
+    private Matrix4 _backModel=new Matrix4();
+    
+    // 5. Incluir los siguientes m'etodos en la clase actor
+
+    public void SaveModel()
+    {
+        _backModel=Model;
+    }
+    public void Scale(Vector3 scale)
+    {
+        Model=Matrix4.CreateScale(scale)*Model;
+    }
+
+    public void RestoreModel()
+    {
+        Model=_backModel;
+    }
+
+    // 6. En el loop de actores> sustituir la orden Draw por esto
+
+    // Paso 20. Lanzamos la orden Draw
+        GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.Replace);  
+        GL.StencilFunc(StencilFunction.Always,1,0xFF);
+        GL.StencilMask(0xFF);
+ 
+        mesh.Draw(_shader,Option.None<Vector3>());
+    
+        GL.StencilFunc(StencilFunction.Notequal,1,0xFF);
+        GL.StencilMask(0x00);
+    
+        actor.SaveModel();
+        actor.Scale(new Vector3(1.02f,1.02f,1.02f));
+
+        _shader.SetMatrix4("model",actor.Model);
+
+        mesh.Draw(_shader,Option.Some(new Vector3(0.0f,0.0f,0.0f)));
+      
+        actor.RestoreModel();
