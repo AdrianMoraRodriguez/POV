@@ -50,26 +50,42 @@ private bool bDrawCollision=false;
 protected void UpdateGameState(float deltaTime){
     
     // Camera
+    float sensibility = 0.1f;
     Vector3 movement=_controller.GetMovement();
    
     //_camera.Position += _camera.Front*movement.X;
     //_camera.Position += _camera.Right*movement.Y;
     //_camera.Position += _camera.Up*movement.Z;
 
-    Angles2D deltaAngles=_controller.GetArmOrientation();
-    Angles2D cameraAngles = new Angles2D(_camera.Yaw,_camera.Pitch);
+    Angles2D deltaAngles = _controller.GetArmOrientation();
+    deltaAngles.Yaw *= sensibility;
+    deltaAngles.Pitch *= sensibility;
+    Angles2D cameraAngles = new Angles2D(_camera.Yaw, _camera.Pitch);
     cameraAngles += deltaAngles;
     _camera.Yaw = (float)cameraAngles.Yaw;
     _camera.Pitch = (float)cameraAngles.Pitch;
+
+    // Pawn
+    float speed = _controller.Speed;
 
     // Buscamos el pawn
     Actor? pawn;
     if( _level.ActorCollection.TryGetValue("apawn", out pawn))
     {
-        Matrix4 pawnModel=pawn.Model;
-        Vector3 translation = (movement.Y,movement.Z,-movement.X);
-	pawn.SaveModel();
-        pawn.Model = pawn.Model*Matrix4.CreateTranslation(translation);
+        Vector3 forward = _camera.Front;
+        Vector3 scale = pawn.Model.ExtractScale();
+        forward.Y = 0.0f; // No quiero que el avance tenga componente vertical
+        forward = Vector3.Normalize(forward);
+        Vector3 translation = forward * movement.X + _camera.Right * movement.Y + _camera.Up * movement.Z;
+        translation *= speed;
+        // Versión antigua sin tener en cuenta la cámara: Vector3 translation = (movement.Y, movement.Z, -movement.X); // movement.X es avance hacia adelante, movement.Y es desplazamiento lateral y movement.Z es desplazamiento vertical
+        //pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
+        if (translation.X != 0.0f)
+        {
+            float targetYaw = MathF.Atan2(-forward.X, -forward.Z);
+            pawn.Model = Matrix4.CreateScale(scale) * Matrix4.CreateRotationY(targetYaw) * Matrix4.CreateTranslation(pawn.Model.ExtractTranslation());
+        }   
+        pawn.Model = pawn.Model * Matrix4.CreateTranslation(translation);
 
         //pawn.CollisionModel = pawn.CollisionModel * Matrix4.CreateTranslation(translation);
 
@@ -86,6 +102,7 @@ protected void UpdateGameState(float deltaTime){
             if (Collision.CheckEB(pawn, actor))
                 {
 		// Restore previous
+            Console.WriteLine($"Chocaste con: {actorid}");
 		    pawn.RestoreModel();
 		    pawn.UpdateCollisionModel();
 		    translation=new Vector3(0.0f,0.0f,0.0f);
@@ -98,11 +115,10 @@ protected void UpdateGameState(float deltaTime){
         
 
         Vector3 pawnNewPosition = pawn.Model.ExtractTranslation();
-
-
-        
-        _camera.Position= new Vector3(_camera.Position.X,pawnNewPosition.Y+_controller.CameraDistance,pawnNewPosition.Z+3*_controller.CameraDistance);
-        _camera.Position += new Vector3(translation.X,0.0f,translation.Z);
+        Vector3 behindOffset = _camera.Front * _controller.CameraDistance;
+        behindOffset.Y = 0.0f;
+        //Console.WriteLine($"Pawn Pos: {pawnNewPosition} ");
+        _camera.Position = pawnNewPosition - behindOffset + new Vector3(0.0f, _controller.CameraDistance / 2, 0.0f);
     } else
     {
     
