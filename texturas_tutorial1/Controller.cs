@@ -46,7 +46,7 @@ public class Controller : IController {
     {
 
             Speed=10.0f;
-            ScaleMovement=1.0f;
+            ScaleMovement=3.0f;
             CameraDistance=4.0f;
             _hRes=hRes;
             _vRes=vRes;

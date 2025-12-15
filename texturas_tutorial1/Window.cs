@@ -21,6 +21,8 @@ public string levelFilePath {get; set;}
 private Level _level=new Level();
 
 private bool bDrawCollision=false;
+private float timeSinceStart=0.0f;
+private float maxTimeForBeating=60.0f; // seconds
 
 
 
@@ -102,7 +104,12 @@ protected void UpdateGameState(float deltaTime){
             if (Collision.CheckEB(pawn, actor))
                 {
 		// Restore previous
-            Console.WriteLine($"Chocaste con: {actorid}");
+            //Console.WriteLine($"Chocaste con: {actorid}"); // Debug
+            if (actorid=="amonkey")
+            {
+                Console.WriteLine("¡Has ganado!");
+                Close();
+            }
 		    pawn.RestoreModel();
 		    pawn.UpdateCollisionModel();
 		    translation=new Vector3(0.0f,0.0f,0.0f);
@@ -139,6 +146,36 @@ protected void InitializeLevel()
         _level=new Level(levelFilePath);
         _level.LoadLevel(AssetCollection);
 }
+
+private void InitializeUI()
+{
+    _uiShader = new Shader("Shaders/ui.vert", "Shaders/ui.frag");
+    float[] uiVertices = new float[]
+    {
+        -1.0f, 0.9f,
+         1.0f, 0.9f,
+        -1.0f, 1.0f,
+         1.0f, 1.0f
+    };
+    _uiVao = GL.GenVertexArray();
+    _uiVbo = GL.GenBuffer();
+    GL.BindVertexArray(_uiVao);
+    GL.BindBuffer(BufferTarget.ArrayBuffer, _uiVbo);
+    GL.BufferData(BufferTarget.ArrayBuffer,
+        uiVertices.Length * sizeof(float),
+        uiVertices,
+        BufferUsageHint.StaticDraw);
+    int posLocation = _uiShader.GetAttribLocation("aPosition");
+    if (posLocation != -1)
+    {
+        GL.EnableVertexAttribArray(posLocation);
+        GL.VertexAttribPointer(posLocation, 2, VertexAttribPointerType.Float,
+            false, 2 * sizeof(float), 0);
+    }
+    GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+    GL.BindVertexArray(0);
+}
+
 
 
 protected override void OnLoad()
@@ -220,14 +257,20 @@ foreach(string meshid in activeMeshes){
             GL.BindVertexArray(0);
 
         }
-
+    InitializeUI();
 
 }
 
 float time=0.0f;
  protected override void OnUpdateFrame(FrameEventArgs e)
 {
-   time+=(float)e.Time;
+    time+=(float)e.Time;
+    timeSinceStart+=(float)e.Time;
+    if(timeSinceStart>=maxTimeForBeating)
+    {
+        Console.WriteLine("¡Se acabó el tiempo! Has perdido.");
+        Close();
+    }
    
     base.OnUpdateFrame(e);
     if (KeyboardState.IsKeyDown(Keys.Escape))
@@ -345,6 +388,32 @@ List<string> activeMeshes = _level.GetActiveMeshes(AssetCollection);
 
   } // Loop sobre los actores
         GL.StencilMask(0xFF);
+        if (_uiShader != null)
+        {
+            // Desactivamos depth y stencil para que la barra SIEMPRE se vea encima
+            GL.Disable(EnableCap.DepthTest);
+            GL.Disable(EnableCap.StencilTest);
+
+            _uiShader.Use();
+
+            // Progreso: 1 al inicio, 0 cuando se acaba el tiempo
+            float progress = 1.0f - timeSinceStart / maxTimeForBeating;
+            progress = MathHelper.Clamp(progress, 0.0f, 1.0f);
+
+            _uiShader.SetFloat("uProgress", progress);
+
+            // Color de la barra: verde cuando tiempo completo, rojo cuando se acaba
+            Vector3 barColor = new Vector3(1.0f - progress, progress, 0.0f);
+            _uiShader.SetVector3("uColor", barColor);
+
+            GL.BindVertexArray(_uiVao);
+            GL.DrawArrays(PrimitiveType.TriangleStrip, 0, 4);
+            GL.BindVertexArray(0);
+
+            // Si quieres volver a dejar depth/stencil como estaban:
+            GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.StencilTest);
+        }
     
 // Paso 21. Hacemos el swap del doble buffer.
 SwapBuffers();
@@ -364,12 +433,16 @@ protected override void OnResize(ResizeEventArgs e)
         GL.BindBuffer(BufferTarget.ArrayBuffer,0);
         GL.BindBuffer(BufferTarget.ElementArrayBuffer,0);
         GL.BindVertexArray(0);
+        if (_uiVbo != 0) GL.DeleteBuffer(_uiVbo);
+        if (_uiVao != 0) GL.DeleteVertexArray(_uiVao);
 
         base.OnUnload();
 }
-private Shader? _shader ;
-    
+    private Shader? _shader ;
 	private Camera _camera;
+    private Shader? _uiShader;
+    private int _uiVao;
+    private int _uiVbo;
 
     
     

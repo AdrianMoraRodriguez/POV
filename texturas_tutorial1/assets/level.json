@@ -7,6 +7,10 @@
             
         },
         {
+            "file" : "assets/monkey_uv.json",
+            "id" : "monkey"
+        },
+        {
             "file" : "assets/sm_cube_uv.json",
             "id" : "cube"
         },
@@ -69,6 +73,18 @@
             },
 			"scale" : [200.0,0.1,200.0]
 		},
+    {
+      "id": "amonkey",
+      "sm": "monkey",
+      "collision": "col_cube",
+      "enabled": true,
+      "position": [127, 0.0, 57],
+      "orientation": {
+        "axis": [0.0, 1.0, 0.0],
+        "angle": 0.0
+      },
+      "scale": [1.0, 1.0, 1.0]
+    },
 {
   "id": "lab_wall_0",
   "sm": "cube_dragon",
@@ -2628,6 +2644,15 @@
   "orientation": { "axis": [0,1,0], "angle": 0 },
   "scale": [1.5, 5, 1.5]
 },
+{
+  "id": "lab_wall_360",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
 
 {
   "id": "lab_wall_256",
@@ -2694,7 +2719,7 @@
   "sm": "cube_dragon",
   "collision": "col_cube",
   "enabled": true,
-  "position": [123, 0.0, 45],
+  "position": [123, 0.0, 51],
   "orientation": { "axis": [0,1,0], "angle": 0 },
   "scale": [1.5, 5, 1.5]
 },

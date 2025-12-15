@@ -12,7 +12,8 @@ public static class Program
         {
             ClientSize=new Vector2i(800,600),
             Title="OpenTk Cube",
-            WindowState=WindowState.Fullscreen
+            WindowState=WindowState.Fullscreen,
+            Profile=ContextProfile.Core,
         };
 
         using(var window=new Window(GameWindowSettings.Default,nativeWindowSetting))
