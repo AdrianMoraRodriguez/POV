@@ -410,7 +410,6 @@ List<string> activeMeshes = _level.GetActiveMeshes(AssetCollection);
             GL.DrawArrays(PrimitiveType.TriangleStrip, 0, 4);
             GL.BindVertexArray(0);
 
-            // Si quieres volver a dejar depth/stencil como estaban:
             GL.Enable(EnableCap.DepthTest);
             GL.Enable(EnableCap.StencilTest);
         }
