@@ -1,0 +1,3705 @@
+{
+
+    "mesh_list" : [
+        {
+            "file" : "assets/sm_airship_uv.json",
+            "id" : "pawn"
+            
+        },
+        {
+            "file" : "assets/monkey_uv.json",
+            "id" : "monkey"
+        },
+        {
+            "file" : "assets/sm_cube_uv.json",
+            "id" : "cube"
+        },
+
+        {
+            "file" : "assets/sm_cube_dragon2_uv.json",
+            "id" : "cube_dragon"
+        },
+
+        {
+            "file" : "assets/sm_airship_collision_uv.json",
+            "id" : "col_pawn"
+        },
+        {
+            "file" : "assets/sm_cube_collision_uv.json",
+            "id" : "col_cube"
+        }
+
+        
+
+    ],
+
+    "texture_list" : [
+
+        {
+            "file" : "assets/greendragon.jpg",
+            "id" : "dragon"
+        }
+
+
+    ],
+
+
+    "actor_list" : [
+        
+        {
+            "id" : "apawn",
+            "sm" : "pawn",
+            "collision" : "col_pawn",
+            "enabled" : true,
+            "position" : [3.0,0.0,3.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 180.0
+            },
+            "scale" : [0.4,0.4,0.4]
+
+        },
+		{
+		    "id" : "afloor",
+            "type" : "staticmesh",
+            "sm" : "cube",
+            "collision" : "col_cube",
+
+            "enabled" : true,
+            "position" : [0.0,-2.0,0.0],
+            "orientation" : {
+                "axis" : [0.0,1.0,0.0],
+                "angle" : 0.0
+            },
+			"scale" : [200.0,0.1,200.0]
+		},
+    {
+      "id": "amonkey",
+      "sm": "monkey",
+      "collision": "col_cube",
+      "enabled": true,
+      "position": [127, 0.0, 57],
+      "orientation": {
+        "axis": [0.0, 1.0, 0.0],
+        "angle": 0.0
+      },
+      "scale": [1.0, 1.0, 1.0]
+    },
+{
+  "id": "lab_wall_0",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_1",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [3, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_2",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [6, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_3",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_4",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_5",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [15, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_6",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_7",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_8",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_9",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_10",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_11",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_12",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_13",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_14",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_15",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_16",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_17",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_18",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_19",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_20",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_21",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_22",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_23",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [69, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_24",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_25",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [75, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_26",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_27",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [81, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_28",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [84, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_29",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_30",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_31",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_32",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_33",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_34",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_35",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_36",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_37",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_38",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [114, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_39",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [117, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_40",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_41",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_42",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_43",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_44",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 0],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_45",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_46",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_47",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_48",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_49",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_50",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 3],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_51",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_52",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_53",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_54",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [15, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_55",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_56",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_57",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_58",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_59",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_60",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_61",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_62",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_63",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_64",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_65",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_66",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_67",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_68",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_69",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_70",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_71",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_72",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [69, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_73",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_74",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [75, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_75",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_76",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [81, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_77",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [84, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_78",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_79",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_80",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_81",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_82",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_83",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_84",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_85",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_86",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 6],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_87",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 9],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_88",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 9],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_89",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 9],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_90",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 9],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_91",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [135, 0.0, 9],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_92",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_93",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_94",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_95",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_96",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_97",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_98",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_99",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_100",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_101",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_102",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_103",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_104",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_105",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_106",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_107",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_108",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_109",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_110",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_111",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [69, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_112",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_113",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [75, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_114",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_115",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_116",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 12],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_117",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_118",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_119",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_120",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_121",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_122",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 15],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_123",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_124",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_125",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_126",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_127",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_128",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_129",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_130",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_131",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_132",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_133",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_134",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_135",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_136",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 18],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_137",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_138",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_139",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_140",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_141",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_142",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_143",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 21],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_144",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_145",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_146",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_147",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_148",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_149",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_150",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_151",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_152",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_153",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_154",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_155",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_156",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_157",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_158",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_159",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_160",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_161",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_162",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_163",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_164",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_165",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_166",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_167",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_168",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_169",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_170",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_171",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 24],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_172",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_173",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_174",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_175",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_176",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_177",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 27],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_178",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_179",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_180",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_181",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [15, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_182",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_183",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_184",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_185",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_186",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_187",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_188",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_189",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_190",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_191",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_192",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_193",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [84, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_194",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_195",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_196",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_197",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_198",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_199",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_200",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_201",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_202",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_203",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [132, 0.0, 30],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_204",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_205",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_206",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_207",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_208",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_209",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [114, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_210",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 33],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_211",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_212",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_213",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_214",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_215",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_216",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_217",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_218",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_219",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_220",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_221",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_222",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_223",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_224",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_225",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 36],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_226",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_227",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_228",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_229",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_230",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_231",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_232",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_233",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 39],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_234",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_235",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [3, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_236",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [6, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_237",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_238",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_239",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_240",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_241",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_242",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_243",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [81, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_244",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [84, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_245",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_246",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_247",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_248",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_249",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_250",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_251",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_252",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_253",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_254",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [114, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_255",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 42],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+{
+  "id": "lab_wall_360",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_256",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_257",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_258",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_259",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_260",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_261",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 45],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_262",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_263",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_264",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_265",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_266",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_267",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_268",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_269",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_270",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_271",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_272",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_273",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_274",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_275",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_276",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_277",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 48],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_278",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_279",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_280",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_281",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_282",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_283",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_284",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 51],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_285",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_286",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_287",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_288",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [15, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_289",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_290",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_291",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_292",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_293",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_294",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_295",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_296",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_297",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_298",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_299",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_300",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_301",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_302",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_303",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_304",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_305",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_306",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_307",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_308",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_309",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_310",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [114, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_311",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [117, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_312",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 54],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_313",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 57],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_314",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 57],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_315",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 57],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_316",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [129, 0.0, 57],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_317",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [0, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_318",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [3, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_319",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [6, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_320",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [9, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_321",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [12, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_322",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [15, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_323",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [18, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_324",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [21, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_325",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [24, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_326",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [27, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_327",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [30, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_328",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [33, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_329",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [36, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_330",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [39, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_331",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [42, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_332",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [45, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_333",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [48, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_334",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [51, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_335",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [54, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_336",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [57, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_337",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [60, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_338",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [63, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_339",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [66, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_340",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [69, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_341",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [72, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_342",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [75, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_343",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [78, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_344",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [81, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_345",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [84, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_346",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [87, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_347",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [90, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_348",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [93, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_349",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [96, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_350",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [99, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_351",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [102, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_352",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [105, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_353",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [108, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_354",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [111, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_355",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [114, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_356",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [117, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_357",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [120, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_358",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [123, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+},
+
+{
+  "id": "lab_wall_359",
+  "sm": "cube_dragon",
+  "collision": "col_cube",
+  "enabled": true,
+  "position": [126, 0.0, 60],
+  "orientation": { "axis": [0,1,0], "angle": 0 },
+  "scale": [1.5, 5, 1.5]
+}
+
+        
+    ],
+
+    "playerstartposition" : [0.0,0.0,0.0],
+    "playerstartrotationangle" : 0.0,
+    "playerstartrotationaxis" : [0.0,1.0,0.0]
+
+    
+}
